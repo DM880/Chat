@@ -8,3 +8,11 @@ from django.http import JsonResponse
 
 def sign(request):
     return render(request, "sign.html")
+
+
+def sign_in(request):
+    pass
+
+
+def sign_out(request):
+    pass

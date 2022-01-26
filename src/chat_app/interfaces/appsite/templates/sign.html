@@ -11,10 +11,11 @@
 </head>
 <body>
 
-<div id="wrap-div" onclick="phoneWrapDiv()" class="wrap">
+<div id="wrap-div" class="wrap">
   <div class="center-login-div">
   <div class="login-div">
-<form>
+<form action="{% url 'sign_in' %}">
+  {% csrf_token %}
   <input name="username" placeholder="username"></input>
   <input name="password" placeholder="password"></input>
   <br>
@@ -23,7 +24,8 @@
   </div>
 </div>
   <div class="create-div">
-    <form>
+    <form action="{% url 'sign_up' %}">
+      {% csrf_token %}
       <input name="username" placeholder="username"></input>
       <input name="email" placeholder="email"></input>
       <input name="password1" placeholder="password"></input>
