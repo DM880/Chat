@@ -1,6 +1,5 @@
- function phoneWrapDiv(){
-  var width = screen.width;
-  if(width < 500){
+window.addEventListener("resize",function(){
+  if(window.matchMedia("(max-width: 500px)").matches){
     document.getElementById("wrap-div").classList.remove('wrap');
     document.getElementById("wrap-div").classList.add('phone');
   }
@@ -8,4 +7,4 @@
     document.getElementById("wrap-div").classList.add('wrap');
     document.getElementById("wrap-div").classList.remove('phone');
   }
-}
+})

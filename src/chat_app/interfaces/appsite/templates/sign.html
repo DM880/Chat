@@ -3,11 +3,10 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>{% block title %}{% endblock %}</title>
+    <title>Sign</title>
 
         <link rel="stylesheet" href="{% static 'css/sign.css' %}">
 
-        {% block css %}{% endblock %}
 </head>
 <body>
 
@@ -18,6 +17,8 @@
   {% csrf_token %}
   <input name="username" placeholder="username"></input>
   <input name="password" placeholder="password"></input>
+  <br>
+  <a href="" style="font-size:15px;">Forgotten Password?</a>
   <br>
   <button id="btn-signin" type="submit" title="Sign In">Sign In</button>
     </form>
