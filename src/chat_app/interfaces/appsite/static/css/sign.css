@@ -57,6 +57,7 @@ button{
   transition: all 0.3s ease;
   color: white;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 #btn-signin{
