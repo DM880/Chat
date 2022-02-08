@@ -8,8 +8,12 @@ class UserChat(models.Model):
 
 
 class Chat(models.Model):
-    user_chat = models.ForeignKey(UserChat, on_delete=models.CASCADE, blank=True, null=True)
-    user_receiver = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    user_chat = models.ForeignKey(
+        UserChat, on_delete=models.CASCADE, blank=True, null=True
+    )
+    user_receiver = models.ForeignKey(
+        User, on_delete=models.CASCADE, blank=True, null=True
+    )
     chat_n = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
 

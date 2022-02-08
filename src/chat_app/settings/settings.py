@@ -46,11 +46,11 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # Data
-    'chat_app.data.chat',
+    "chat_app.data.chat",
     # Interface
     "chat_app.interfaces",
     "chat_app.interfaces.appsite",
-    'chat_app.interfaces.djangoadmin',
+    "chat_app.interfaces.djangoadmin",
 ]
 
 

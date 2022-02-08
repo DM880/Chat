@@ -19,8 +19,8 @@ def sign_in(request):
 
     if request.method == "POST":
 
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+        username = request.POST.get("username")
+        password = request.POST.get("password")
 
         user = authenticate(username=username, password=password)
 
@@ -36,39 +36,36 @@ def sign_in(request):
         return render(request, "sign.html")
 
 
-
-
 def sign_up(request):
 
     if request.method == "POST":
 
-        username = request.POST.get('username_signup')
-        email = request.POST.get('email_signup')
-        password1 = request.POST.get('password1')
-        password2 = request.POST.get('password2')
-
+        username = request.POST.get("username_signup")
+        email = request.POST.get("email_signup")
+        password1 = request.POST.get("password1")
+        password2 = request.POST.get("password2")
 
         if User.objects.filter(username=username).exists():
             error = f"{username} - Username already exist"
-            return render(request, 'sign.html', {'error':error})
+            return render(request, "sign.html", {"error": error})
 
         elif User.objects.filter(email=email).exists():
             error = f"{email} - Email already exist"
-            return render(request, 'sign.html', {'error':error})
+            return render(request, "sign.html", {"error": error})
 
         elif password1 != password2:
             error = "Passwords don't match"
-            return render(request, 'sign.html', {'error':error})
+            return render(request, "sign.html", {"error": error})
 
         user_data = {
-            'username':username,
-            'email': email,
-            'password': password,
-            }
+            "username": username,
+            "email": email,
+            "password": password,
+        }
 
         User.object.create(**user_data)
 
-        return redirect('sign')
+        return redirect("sign")
 
     else:
-        return redirect('sign')
+        return redirect("sign")
