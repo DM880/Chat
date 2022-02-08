@@ -41,23 +41,23 @@ def sign_up(request):
 
     if request.method == "POST":
 
-        username = request.POST.get('username')
-        email = request.POST.get('email')
+        username = request.POST.get('username_signup')
+        email = request.POST.get('email_signup')
         password1 = request.POST.get('password1')
-        password2 = requst.POST.get('password2')
+        password2 = request.POST.get('password2')
 
 
         if User.objects.filter(username=username).exists():
             error = f"{username} - Username already exist"
-            return render(request, 'sign.html', error)
+            return render(request, 'sign.html', {'error':error})
 
         elif User.objects.filter(email=email).exists():
             error = f"{email} - Email already exist"
-            return render(request, 'sign.html', error)
+            return render(request, 'sign.html', {'error':error})
 
         elif password1 != password2:
             error = "Passwords don't match"
-            return render(request, 'sign.html', error)
+            return render(request, 'sign.html', {'error':error})
 
         user_data = {
             'username':username,
@@ -69,4 +69,5 @@ def sign_up(request):
 
         return redirect('sign')
 
-    pass
+    else:
+        return redirect('sign')
