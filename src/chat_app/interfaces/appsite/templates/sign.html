@@ -10,15 +10,15 @@
 </head>
 <body>
 
-  {% if error %} <div style="position:absolute;top:0;"><h5 style="color:red;">{{ error }}</h5></div>{% endif %}
+  {% if error %}<div style="position:absolute;top:0;"><h3 style="color:red;">{{ error }}</h3></div>{% endif %}
 
 <div id="wrap-div" class="wrap">
   <div class="center-login-div">
   <div class="login-div">
-<form action="{% url 'sign_in' %}">
+<form action="{% url 'sign_in' %}" method="POST">
   {% csrf_token %}
-  <input name="username" placeholder="username"></input>
-  <input name="password" placeholder="password"></input>
+  <input name="username" placeholder="username" required="true"></input>
+  <input name="password" placeholder="password" type="password" required="true"></input>
   <br>
   <a href="" style="font-size:15px;">Forgotten Password?</a>
   <br>
@@ -27,12 +27,12 @@
   </div>
 </div>
   <div class="create-div">
-    <form action="{% url 'sign_up' %}">
+    <form action="{% url 'sign_up' %}" method="POST">
       {% csrf_token %}
-      <input name="username" placeholder="username"></input>
-      <input name="email" placeholder="email"></input>
-      <input name="password1" placeholder="password"></input>
-      <input name="password2" placeholder="confirm password"></input>
+      <input name="username_signup" placeholder="username" required="true"></input>
+      <input name="email_signup" placeholder="email" type="email" required="true"></input>
+      <input name="password1" placeholder="password" type="password" required="true"></input>
+      <input name="password2" placeholder="confirm password" type="password" required="true"></input>
     <br>
 <button id="btn-signup" type="submit" title="Create Account">Sign Up</button>
     </form>
