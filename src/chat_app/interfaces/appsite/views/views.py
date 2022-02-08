@@ -30,7 +30,8 @@ def sign_in(request):
 
                 # return redirect("page")
         else:
-            return render(request, "sign.html", {"error": True})
+            error = "Login details invalid"
+            return render(request, "sign.html", {"error": error})
     else:
         return render(request, "sign.html")
 

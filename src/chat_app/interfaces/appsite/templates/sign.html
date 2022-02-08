@@ -18,7 +18,7 @@
 <form action="{% url 'sign_in' %}" method="POST">
   {% csrf_token %}
   <input name="username" placeholder="username" required="true"></input>
-  <input name="password" placeholder="password" required="true"></input>
+  <input name="password" placeholder="password" type="password" required="true"></input>
   <br>
   <a href="" style="font-size:15px;">Forgotten Password?</a>
   <br>
