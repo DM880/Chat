@@ -46,26 +46,28 @@ def sign_up(request):
         password2 = request.POST.get("password2")
 
         if User.objects.filter(username=username).exists():
-            error = f"{username} - Username already exist"
-            return render(request, "sign.html", {"error": error})
+            message = f"{username} - Username already exist"
+            return render(request, "sign.html", {'message':message})
 
         elif User.objects.filter(email=email).exists():
-            error = f"{email} - Email already exist"
-            return render(request, "sign.html", {"error": error})
+            message = f"{email} - Email already exist"
+            return render(request, "sign.html", {'message':message})
 
         elif password1 != password2:
-            error = "Passwords don't match"
-            return render(request, "sign.html", {"error": error})
+            message = "Passwords don't match"
+            return render(request, "sign.html", {'message':message})
 
         user_data = {
             "username": username,
             "email": email,
-            "password": password,
+            "password": password1,
         }
 
-        User.object.create(**user_data)
+        User.objects.create(**user_data)
 
-        return redirect("sign")
+        message = "Account created successfully"
+
+        return render(request, "sign.html", {'message':message})
 
     else:
         return redirect("sign")
