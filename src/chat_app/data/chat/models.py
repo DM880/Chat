@@ -1,29 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
-import uuid
+from django.utils import timezone
 
 
-class UserChat(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+class Room(models.Model):
+    name = models.CharField(max_length=50)
 
-
-class Chat(models.Model):
-    user_chat = models.ForeignKey(
-        UserChat, on_delete=models.CASCADE, blank=True, null=True
-    )
-    user_receiver = models.ForeignKey(
-        User, on_delete=models.CASCADE, blank=True, null=True
-    )
-    chat_n = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-
-
-class ChatSenderMessage(models.Model):
-    chat = models.ForeignKey(Chat, on_delete=models.CASCADE, blank=True, null=True)
-    sender_message = models.TextField()
-    timestamp = models.DateTimeField(auto_now=True)
-
-
-class ChatReceiverMessage(models.Model):
-    chat = models.ForeignKey(Chat, on_delete=models.CASCADE, blank=True, null=True)
-    receiver_message = models.TextField()
-    timestamp = models.DateTimeField(auto_now=True)
+class Message(models.Model):
+    room = models.ForeignKey(Room, on_delete=models.CASCADE)
+    handle = models.ForeignKey(Room, on_delete=models.CASCADE)
+    message = models.TextField()
+    timestamp = models.DateTimeField(default=timezone.now, db_index=True)
