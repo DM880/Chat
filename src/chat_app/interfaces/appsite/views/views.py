@@ -19,8 +19,8 @@ def sign_in(request):
 
     if request.method == "POST":
 
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+        username = request.POST.get("username")
+        password = request.POST.get("password")
 
         user = authenticate(username=username, password=password)
 
@@ -36,39 +36,44 @@ def sign_in(request):
         return render(request, "sign.html")
 
 
-
-
 def sign_up(request):
 
     if request.method == "POST":
 
-        username = request.POST.get('username_signup')
-        email = request.POST.get('email_signup')
-        password1 = request.POST.get('password1')
-        password2 = request.POST.get('password2')
-
+        username = request.POST.get("username_signup")
+        email = request.POST.get("email_signup")
+        password1 = request.POST.get("password1")
+        password2 = request.POST.get("password2")
 
         if User.objects.filter(username=username).exists():
-            error = f"{username} - Username already exist"
-            return render(request, 'sign.html', {'error':error})
+            message = f"{username} - Username already exist"
+            return render(request, "sign.html", {'message':message})
 
         elif User.objects.filter(email=email).exists():
-            error = f"{email} - Email already exist"
-            return render(request, 'sign.html', {'error':error})
+            message = f"{email} - Email already exist"
+            return render(request, "sign.html", {'message':message})
 
         elif password1 != password2:
-            error = "Passwords don't match"
-            return render(request, 'sign.html', {'error':error})
+            message = "Passwords don't match"
+            return render(request, "sign.html", {'message':message})
 
         user_data = {
-            'username':username,
-            'email': email,
-            'password': password,
-            }
+            "username": username,
+            "email": email,
+            "password": password1,
+        }
 
-        User.object.create(**user_data)
+        User.objects.create(**user_data)
 
-        return redirect('sign')
+        message = "Account created successfully"
+
+        return render(request, "sign.html", {'message':message})
 
     else:
-        return redirect('sign')
+        return redirect("sign")
+
+
+# Chat Room
+
+def room(request, room_name):
+    return render(request, 'chat_room.html', {'room_name':room_name})

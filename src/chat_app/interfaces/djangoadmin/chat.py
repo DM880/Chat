@@ -1,7 +1,12 @@
 from django.contrib import admin
 
 
-from chat_app.data.chat.models import UserChat, Chat, ChatSenderMessage, ChatReceiverMessage
+from chat_app.data.chat.models import (
+    UserChat,
+    Chat,
+    ChatSenderMessage,
+    ChatReceiverMessage,
+)
 
 
 class ChatSenderMessageAdmin(admin.TabularInline):

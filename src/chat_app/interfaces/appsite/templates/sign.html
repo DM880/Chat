@@ -4,13 +4,13 @@
 <head>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <title>Sign</title>
-
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css'>
         <link rel="stylesheet" href="{% static 'css/sign.css' %}">
 
 </head>
 <body>
 
-  {% if error %}<div style="position:absolute;top:0;"><h3 style="color:red;">{{ error }}</h3></div>{% endif %}
+  {% if message %}<div style="position:absolute;top:0;"><h3 style="color:blue;">{{ message }}</h3></div>{% endif %}
 
 <div id="wrap-div" class="wrap">
   <div class="center-login-div">

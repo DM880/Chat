@@ -45,12 +45,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'channels',
     # Data
-    'chat_app.data.chat',
+    "chat_app.data.chat",
     # Interface
     "chat_app.interfaces",
     "chat_app.interfaces.appsite",
-    'chat_app.interfaces.djangoadmin',
+    "chat_app.interfaces.djangoadmin",
 ]
 
 
@@ -83,6 +84,19 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "chat_app.wsgi.application"
+
+# Channels
+ASGI_APPLICATION = 'chat_app.asgi.application'
+
+CHANNEL_LAYERS = {
+        'default': {
+        'BACKEND': "channels.layers.InMemoryChannelLayer"
+    # 'default': {
+    #     'BACKEND': 'channels_redis.core.RedisChannelLayer',
+    #     'CONFIG': {
+    #         "hosts": [('0.0.0.0:8080', 6379)],
+        },
+    }
 
 
 # Database
