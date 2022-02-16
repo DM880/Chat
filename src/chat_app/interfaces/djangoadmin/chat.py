@@ -1,25 +1,15 @@
 from django.contrib import admin
 
 
-from chat_app.data.chat.models import (
-    UserChat,
-    Chat,
-    ChatSenderMessage,
-    ChatReceiverMessage,
-)
+from chat_app.data.chat.models import Room, Message
 
 
-class ChatSenderMessageAdmin(admin.TabularInline):
-    model = ChatSenderMessage
+class MessageAdmin(admin.TabularInline):
+    model = Message
 
 
-class ChatReceiverMessageAdmin(admin.TabularInline):
-    model = ChatReceiverMessage
+class RoomAdmin(admin.ModelAdmin):
+    inlines = [MessageAdmin]
 
 
-class ChatAdmin(admin.ModelAdmin):
-    inlines = [ChatSenderMessageAdmin, ChatReceiverMessageAdmin]
-
-
-admin.site.register(UserChat)
-admin.site.register(Chat, ChatAdmin)
+admin.site.register(Room, RoomAdmin)
