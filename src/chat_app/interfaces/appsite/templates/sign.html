@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-<head>
-    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>Sign</title>
-        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css'>
-        <link rel="stylesheet" href="{% static 'css/sign.css' %}">
+{% extends 'base.html' %}
 
-</head>
-<body>
+{% load static %}
+
+    {% block title %}Sign{% endblock %}
+
+        {% block css %}<link rel="stylesheet" href="{% static 'css/sign.css' %}">{% endblock %}
+
+{% block content %}
 
   {% if message %}<div style="position:absolute;top:0;"><h3 style="color:blue;">{{ message }}</h3></div>{% endif %}
 
@@ -41,5 +39,4 @@
 
 <script src="{% static 'js/sign.js' %}"></script>
 
-</body>
-</html>
+{% endblock %}
