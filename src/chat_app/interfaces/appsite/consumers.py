@@ -23,23 +23,44 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     # Receive message from WebSocket
     async def receive(self, text_data):
+        username = self.scope["user"].username
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
+        message_user = (username + ': ' + message)
 
-        # Send message to room group
         await self.channel_layer.group_send(
             self.room_group_name,
             {
                 'type': 'chat_message',
-                'message': message
+                'message': message_user
             }
         )
+
 
     # Receive message from room group
     async def chat_message(self, event):
         message = event['message']
+        username = self.scope["user"].username
 
         # Send message to WebSocket
         await self.send(text_data=json.dumps({
-            'message': message
+            'message': message,
+            "username": username
         }))
+
+
+    # @database_sync_to_async
+    # def create_mess_instance(self, text_data):
+    #     text_data_json = json.loads(text_data)
+    #     message = text_data_json['message']
+    #     room = text_data_json
+
+    #     json_model_data = {
+    #         'user':self.scope['user'],
+    #         'room': room,
+    #         'message': message,
+    #     }
+
+    #     mess_instance = Message.objects.create(**json_model_data)
+
+    #     return mess_instance

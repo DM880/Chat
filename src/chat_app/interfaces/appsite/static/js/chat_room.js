@@ -14,7 +14,10 @@ const roomName = JSON.parse(document.getElementById('room-name').textContent);
 
      chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
-            document.querySelector('#chat-log').value += (data.message + '\n');
+            document.querySelector('#chat-log').innerHTML += '<div class="message sender-message" id="chat-log">' + (data.message + '\n') + '</div>';
+
+            // keep bottom page on added contetn
+            window.scrollTo(0,document.body.scrollHeight);
         };
 
         chatSocket.onclose = function(e) {
@@ -28,11 +31,14 @@ const roomName = JSON.parse(document.getElementById('room-name').textContent);
             }
         };
 
-        document.querySelector('#chat-message-submit').onclick = function(e) {
+           document.querySelector('#chat-message-submit').onclick = function(e) {
             const messageInputDom = document.querySelector('#chat-message-input');
             const message = messageInputDom.value;
+            const username = JSON.parse(document.getElementById('username').textContent);
             chatSocket.send(JSON.stringify({
-                'message': message
+                'message': message,
+                'username': username,
             }));
             messageInputDom.value = '';
+
         };

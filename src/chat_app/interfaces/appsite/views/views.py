@@ -74,8 +74,15 @@ def sign_up(request):
 # Chat Room
 
 def create_room_chat(request):
+
+    if request.method == "POST":
+        room_name = request.POST.get('room_name')
+
+        return redirect('room', room_name)
+
     return render(request, 'create_room_chat.html')
 
 
 def room(request, room_name):
+
     return render(request, 'chat_room.html', {'room_name':room_name})

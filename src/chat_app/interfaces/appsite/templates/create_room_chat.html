@@ -9,9 +9,12 @@
 
 <div class="wrapper">
   <div class="room-create">
+    <form method="post" action="{% url 'create_room_chat' %}">
+      {% csrf_token %}
     <h2>Create Room Chat</h2>
-    <input placeholder="Room Name"></input>
+    <input placeholder="Room Name" name="room_name"></input>
   <button type="submit">Create</button>
+  </form>
   </div>
 </div>
 
