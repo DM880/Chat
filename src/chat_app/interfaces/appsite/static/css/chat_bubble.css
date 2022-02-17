@@ -20,3 +20,15 @@
 .receiver-message{
   background-color: grey;
 }
+
+.time-mess{
+  margin-top: -15px;
+  margin-bottom:-10px;
+  opacity:0.5;
+}
+
+.mess-input{
+  position:fixed;
+  bottom: 20px;
+  right: 50px;
+}
