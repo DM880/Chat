@@ -14,8 +14,7 @@ def sign(request):
 def sign_in(request):
 
     if request.user.is_authenticated:
-        pass
-        # return redirect("page")
+        return redirect("create_room_chat")
 
     if request.method == "POST":
 
@@ -27,8 +26,7 @@ def sign_in(request):
         if user:
             if user.is_active:
                 login(request, user)
-
-                # return redirect("page")
+                return redirect("create_room_chat")
         else:
             error = "Login details invalid"
             return render(request, "sign.html", {"error": error})
@@ -75,5 +73,11 @@ def sign_up(request):
 
 # Chat Room
 
+@login_required
+def create_room_chat(request):
+    return render(request, 'create_room_chat.html')
+
+
+@login_required
 def room(request, room_name):
     return render(request, 'chat_room.html', {'room_name':room_name})
