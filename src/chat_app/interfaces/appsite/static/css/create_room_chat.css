@@ -8,18 +8,20 @@ body{
 
 .room-create{
   background-color: #EEEEEE;
-  width: 50%;
+  width: 500px;
   margin: auto;
   margin-top: 25%;
   border: solid grey 1px;
   text-align: center;
-  padding-top: 20px;
+  padding-top: 50px;
   padding-bottom: 50px;
-}
-
-.room-create{
   font-family:'Roboto',sans-serif;
   color: #8A39E1;
+}
+
+.room-create h2{
+  margin-bottom: 50px;
+  font-weight: bold;
 }
 
 .room-create button{
@@ -29,7 +31,7 @@ body{
   padding:5px;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: bold;
 }
 
@@ -38,5 +40,5 @@ body{
 }
 
 .room-create input{
-  height: 20px;
+  height: 38px;
 }
