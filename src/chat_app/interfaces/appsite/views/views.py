@@ -1,6 +1,5 @@
 from django.conf import settings
 from django.shortcuts import render, redirect, reverse
-from django.views import generic as generic_views
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
@@ -8,6 +7,8 @@ from django.contrib.auth.models import User
 
 
 def sign(request):
+    if request.user.is_authenticated:
+        return redirect("create_room_chat")
     return render(request, "sign.html")
 
 
@@ -23,7 +24,7 @@ def sign_in(request):
 
         user = authenticate(username=username, password=password)
 
-        if user is not None:
+        if user:
             if user.is_active:
                 login(request, user)
                 return redirect("create_room_chat")
@@ -45,15 +46,15 @@ def sign_up(request):
 
         if User.objects.filter(username=username).exists():
             message = f"{username} - Username already exist"
-            return render(request, "sign.html", {'message':message})
+            return render(request, "sign.html", {"message": message})
 
         elif User.objects.filter(email=email).exists():
             message = f"{email} - Email already exist"
-            return render(request, "sign.html", {'message':message})
+            return render(request, "sign.html", {"message": message})
 
         elif password1 != password2:
             message = "Passwords don't match"
-            return render(request, "sign.html", {'message':message})
+            return render(request, "sign.html", {"message": message})
 
         user_data = {
             "username": username,
@@ -61,11 +62,11 @@ def sign_up(request):
             "password": password1,
         }
 
-        User.objects.create(**user_data)
+        user = User.objects.create_user(**user_data)
 
         message = "Account created successfully"
 
-        return render(request, "sign.html", {'message':message})
+        return render(request, "sign.html", {"message": message})
 
     else:
         return redirect("sign")
@@ -73,16 +74,18 @@ def sign_up(request):
 
 # Chat Room
 
+@login_required
 def create_room_chat(request):
 
     if request.method == "POST":
-        room_name = request.POST.get('room_name')
+        room_name = request.POST.get("room_name")
 
-        return redirect('room', room_name)
+        return redirect("room", room_name)
 
-    return render(request, 'create_room_chat.html')
+    return render(request, "create_room_chat.html")
 
 
+@login_required
 def room(request, room_name):
 
-    return render(request, 'chat_room.html', {'room_name':room_name})
+    return render(request, "chat_room.html", {"room_name": room_name})
