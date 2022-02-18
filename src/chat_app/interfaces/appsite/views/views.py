@@ -7,6 +7,8 @@ from django.contrib.auth.models import User
 
 
 def sign(request):
+    if request.user.is_authenticated:
+        return redirect("create_room_chat")
     return render(request, "sign.html")
 
 
@@ -72,7 +74,7 @@ def sign_up(request):
 
 # Chat Room
 
-
+@login_required
 def create_room_chat(request):
 
     if request.method == "POST":
@@ -83,6 +85,7 @@ def create_room_chat(request):
     return render(request, "create_room_chat.html")
 
 
+@login_required
 def room(request, room_name):
 
     return render(request, "chat_room.html", {"room_name": room_name})
