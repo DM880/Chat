@@ -22,7 +22,7 @@ def sign_in(request):
 
         user = authenticate(username=username, password=password)
 
-        if user is not None:
+        if user:
             if user.is_active:
                 login(request, user)
                 return redirect("create_room_chat")
@@ -60,7 +60,7 @@ def sign_up(request):
             "password": password1,
         }
 
-        User.objects.create(**user_data)
+        user = User.objects.create_user(**user_data)
 
         message = "Account created successfully"
 
