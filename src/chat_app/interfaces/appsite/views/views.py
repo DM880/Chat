@@ -77,6 +77,7 @@ def sign_up(request):
 
 # Chat Room
 
+
 @login_required
 def create_room_chat(request):
 
@@ -100,4 +101,8 @@ def room(request, room_name):
 
     username = request.user.username
 
-    return render(request, "chat_room.html", {"room_name": room_name, 'username':username, 'all_messages':all_messages})
+    return render(
+        request,
+        "chat_room.html",
+        {"room_name": room_name, "username": username, "all_messages": all_messages},
+    )

@@ -30,7 +30,8 @@ class ChatConsumer(AsyncWebsocketConsumer):
         await self.create_mess_instance(text_data)
 
         await self.channel_layer.group_send(
-            self.room_group_name, {"type": "chat_message", "message": message_user,"username":username}
+            self.room_group_name,
+            {"type": "chat_message", "message": message_user, "username": username},
         )
 
     # Receive message from room group
@@ -46,14 +47,14 @@ class ChatConsumer(AsyncWebsocketConsumer):
     @database_sync_to_async
     def create_mess_instance(self, text_data):
         text_data_json = json.loads(text_data)
-        message = text_data_json['message']
+        message = text_data_json["message"]
 
-        room = Room.objects.get(name = text_data_json['room_name'])
+        room = Room.objects.get(name=text_data_json["room_name"])
 
         json_model_data = {
-            'handle':self.scope['user'].username,
-            'room': room,
-            'message': message,
+            "handle": self.scope["user"].username,
+            "room": room,
+            "message": message,
         }
 
         mess_instance = Message.objects.create(**json_model_data)
