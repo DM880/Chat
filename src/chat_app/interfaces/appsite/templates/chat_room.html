@@ -19,13 +19,13 @@
 
         <div class="message sender-message">{{message.handle}}:{{ message.message }}
         <br>
-        {{message.timestamp}}</div>
+        <p style="opacity:0.5;font-size:12px;margin-bottom:-10px;">{{message.timestamp}}</p></div>
 
     {% else %}
 
         <div class="message receiver-message">{{message.handle}}:{{ message.message }}
         <br>
-        {{message.timestamp}}</div>
+        <p style="opacity:0.5;font-size:12px;margin-bottom:-10px;">{{message.timestamp}}</p></div>
 
     {% endif %}
 
