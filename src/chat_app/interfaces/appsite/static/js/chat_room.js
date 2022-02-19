@@ -65,22 +65,25 @@ const roomName = JSON.parse(document.getElementById('room-name').textContent);
         };
 
 
-        function getDate(timestamp){
-            var month = month_names[timestamp.getMonth()].substring(0,3);
-            var day = timestamp.getDate();
-            var year = timestamp.getFullYear();
-            var date = month + '. ' + day + ', ' + year;
-            return date;
-        }
+
+// Timestamp functions
+
+function getDate(timestamp){
+    var month = month_names[timestamp.getMonth()].substring(0,3);
+    var day = timestamp.getDate();
+    var year = timestamp.getFullYear();
+    var date = month + '. ' + day + ', ' + year;
+    return date;
+}
 
 
-        function getTime(timestamp){
-            var hours = timestamp.getHours();
-            var minutes = timestamp.getMinutes();
-            var make_time = hours >= 12 ? 'pm' : 'am';
-            hours = hours % 12;
-            hours = hours ? hours : 12;
-            minutes = minutes < 10 ? '0'+minutes : minutes;
-            var time = hours + ':' + minutes + ' ' + make_time;
-            return time;
-        }
+function getTime(timestamp){
+    var hours = timestamp.getHours();
+    var minutes = timestamp.getMinutes();
+    var make_time = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    var time = hours + ':' + minutes + ' ' + make_time;
+    return time;
+}
