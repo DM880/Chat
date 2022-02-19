@@ -35,7 +35,7 @@ const roomName = JSON.parse(document.getElementById('room-name').textContent);
                 '<br><p style="opacity:0.5;font-size:12px;margin-bottom:-10px;">'+timestamp+'</p></div>';
             }
 
-            // keep bottom page on added contetn
+            // keep bottom page on added content
             window.scrollTo(0,document.body.scrollHeight);
         };
 
