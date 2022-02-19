@@ -64,7 +64,11 @@ const roomName = JSON.parse(document.getElementById('room-name').textContent);
 
         };
 
+// Load page at bottom
 
+window.onload = function () {
+  window.scrollTo(0,document.body.scrollHeight);
+}
 
 // Timestamp functions
 
