@@ -28,11 +28,11 @@ const roomName = JSON.parse(document.getElementById('room-name').textContent);
 
             if(username == data.username){
                 document.querySelector('#chat-log').innerHTML += '<div class="message sender-message">'+ (data.message + '\n') +
-                '<br><p style="opacity:0.5;font-size:12px;margin-bottom:-10px;">'+ timestamp +'</p></div>';
+                '<br><p class="timestamp">'+ timestamp +'</p></div>';
             }
             else{
                 document.querySelector('#chat-log').innerHTML += '<div class="message receiver-message">' + (data.message + '\n') +
-                '<br><p style="opacity:0.5;font-size:12px;margin-bottom:-10px;">'+timestamp+'</p></div>';
+                '<br><p class="timestamp">'+timestamp+'</p></div>';
             }
 
             // keep bottom page on added content
