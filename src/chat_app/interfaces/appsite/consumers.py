@@ -1,5 +1,9 @@
 import json
+from channels.db import database_sync_to_async
 from channels.generic.websocket import AsyncWebsocketConsumer
+
+
+from chat_app.data.chat.models import Room, Message
 
 
 class ChatConsumer(AsyncWebsocketConsumer):
@@ -23,8 +27,10 @@ class ChatConsumer(AsyncWebsocketConsumer):
         message = text_data_json["message"]
         message_user = username + ": " + message
 
+        await self.create_mess_instance(text_data)
+
         await self.channel_layer.group_send(
-            self.room_group_name, {"type": "chat_message", "message": message_user}
+            self.room_group_name, {"type": "chat_message", "message": message_user,"username":username}
         )
 
     # Receive message from room group
@@ -37,18 +43,19 @@ class ChatConsumer(AsyncWebsocketConsumer):
             text_data=json.dumps({"message": message, "username": username})
         )
 
-    # @database_sync_to_async
-    # def create_mess_instance(self, text_data):
-    #     text_data_json = json.loads(text_data)
-    #     message = text_data_json['message']
-    #     room = text_data_json
+    @database_sync_to_async
+    def create_mess_instance(self, text_data):
+        text_data_json = json.loads(text_data)
+        message = text_data_json['message']
 
-    #     json_model_data = {
-    #         'user':self.scope['user'],
-    #         'room': room,
-    #         'message': message,
-    #     }
+        room = Room.objects.get(name = text_data_json['room_name'])
 
-    #     mess_instance = Message.objects.create(**json_model_data)
+        json_model_data = {
+            'handle':self.scope['user'].username,
+            'room': room,
+            'message': message,
+        }
 
-    #     return mess_instance
+        mess_instance = Message.objects.create(**json_model_data)
+
+        return mess_instance

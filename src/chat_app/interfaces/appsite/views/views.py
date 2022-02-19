@@ -6,6 +6,9 @@ from django.http import JsonResponse
 from django.contrib.auth.models import User
 
 
+from chat_app.data.chat.models import Room, Message
+
+
 def sign(request):
     if request.user.is_authenticated:
         return redirect("create_room_chat")
@@ -80,6 +83,9 @@ def create_room_chat(request):
     if request.method == "POST":
         room_name = request.POST.get("room_name")
 
+        if Room.objects.filter(name=room_name).exists() == False:
+            Room.objects.create(name=room_name)
+
         return redirect("room", room_name)
 
     return render(request, "create_room_chat.html")
@@ -88,4 +94,10 @@ def create_room_chat(request):
 @login_required
 def room(request, room_name):
 
-    return render(request, "chat_room.html", {"room_name": room_name})
+    room_messages = Room.objects.get(name=room_name)
+
+    all_messages = Message.objects.filter(room=room_messages)
+
+    username = request.user.username
+
+    return render(request, "chat_room.html", {"room_name": room_name, 'username':username, 'all_messages':all_messages})

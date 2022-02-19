@@ -7,10 +7,29 @@
 
 {% load static %}
 
-
 {% block content %}
 
+<input type="hidden" id="me" value="{{ username }}">
+
 <div id="chat-log">
+
+    {% for message in all_messages.all %}
+
+    {% if username == message.handle %}
+
+        <div class="message sender-message">{{message.handle}}:{{ message.message }}
+        <br>
+        <p style="opacity:0.5;font-size:12px;margin-bottom:-10px;">{{message.timestamp}}</p></div>
+
+    {% else %}
+
+        <div class="message receiver-message">{{message.handle}}:{{ message.message }}
+        <br>
+        <p style="opacity:0.5;font-size:12px;margin-bottom:-10px;">{{message.timestamp}}</p></div>
+
+    {% endif %}
+
+    {% endfor %}
 
 </div>
 
