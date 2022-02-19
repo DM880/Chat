@@ -14,7 +14,13 @@ const roomName = JSON.parse(document.getElementById('room-name').textContent);
 
      chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
-            document.querySelector('#chat-log').innerHTML += '<div class="message sender-message" id="chat-log">' + (data.message + '\n') + '</div>';
+            var username = document.getElementById('me').value;
+            if(username == data.username){
+                document.querySelector('#chat-log').innerHTML += '<div class="message sender-message">' + (data.message + '\n') + '</div>';
+            }
+            else{
+                document.querySelector('#chat-log').innerHTML += '<div class="message receiver-message">' + (data.message + '\n') + '</div>';
+            }
 
             // keep bottom page on added contetn
             window.scrollTo(0,document.body.scrollHeight);
@@ -34,10 +40,12 @@ const roomName = JSON.parse(document.getElementById('room-name').textContent);
            document.querySelector('#chat-message-submit').onclick = function(e) {
             const messageInputDom = document.querySelector('#chat-message-input');
             const message = messageInputDom.value;
-            const username = JSON.parse(document.getElementById('username').textContent);
+            const room_name = JSON.parse(document.getElementById('room-name').textContent);
+            const username = document.getElementById('me').value;
             chatSocket.send(JSON.stringify({
                 'message': message,
                 'username': username,
+                'room_name':room_name,
             }));
             messageInputDom.value = '';
 
