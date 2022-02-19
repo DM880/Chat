@@ -15,11 +15,14 @@ const roomName = JSON.parse(document.getElementById('room-name').textContent);
      chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
             var username = document.getElementById('me').value;
+            var timestamp = new Date().toLocaleString();
             if(username == data.username){
-                document.querySelector('#chat-log').innerHTML += '<div class="message sender-message">' + (data.message + '\n') + '</div>';
+                document.querySelector('#chat-log').innerHTML += '<div class="message sender-message">' + (data.message + '\n') +
+                '<br><p style="opacity:0.5;font-size:12px;margin-bottom:-10px;">'+timestamp+'</p></div>';
             }
             else{
-                document.querySelector('#chat-log').innerHTML += '<div class="message receiver-message">' + (data.message + '\n') + '</div>';
+                document.querySelector('#chat-log').innerHTML += '<div class="message receiver-message">' + (data.message + '\n') +
+                '<br><p style="opacity:0.5;font-size:12px;margin-bottom:-10px;">'+timestamp+'</p></div>';
             }
 
             // keep bottom page on added contetn
