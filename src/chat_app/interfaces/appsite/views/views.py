@@ -85,7 +85,7 @@ def sign_up(request):
 def create_room_chat(request):
 
     if request.method == "POST":
-        room_name = request.POST.get("room_name")
+        room_name = request.POST.get("room_name").lower()
 
         #if empty redirect to same page
         if not room_name:
