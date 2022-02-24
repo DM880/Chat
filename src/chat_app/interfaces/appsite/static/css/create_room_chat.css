@@ -42,3 +42,14 @@ body{
 .room-create input{
   height: 38px;
 }
+
+.description{
+  margin-top: 100px;
+  width: auto;
+  color: white;
+  font-weight:bold;
+}
+
+.description li{
+  margin-bottom: 20px;
+}
