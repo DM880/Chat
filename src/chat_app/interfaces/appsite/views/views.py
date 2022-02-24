@@ -9,6 +9,10 @@ from django.contrib.auth.models import User
 from chat_app.data.chat.models import Room, Message
 
 
+from chat_app.domain.chat.tasks import time_check
+
+
+
 def sign(request):
     if request.user.is_authenticated:
         return redirect("create_room_chat")
@@ -86,6 +90,13 @@ def create_room_chat(request):
 
         if Room.objects.filter(name=room_name).exists() == False:
             Room.objects.create(name=room_name)
+
+        else:
+            room = Room.objects.get(name=room_name)
+            check = time_check(room)
+
+            if check == True:
+                Room.objects.create(name=room_name)
 
         return redirect("room", room_name)
 
