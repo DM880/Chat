@@ -8,12 +8,19 @@ from chat_app.data.chat.models import Room, Message
 
 def time_check(room):
 
-    last_message = Message.objects.filter(room=room).order_by('timestamp')[0]
+    last_message = Message.objects.filter(room=room).order_by("-timestamp").first()
+
+    if not last_message:
+        return False
+
     all_messages = Message.objects.filter(room=room)
 
-    time_passed = str(last_message.timestamp+relativedelta(months=+1))
+    #last message timestamp + 10 days
+    time_passed = str(last_message.timestamp + relativedelta(days=+10))
+
     time_now = str(timezone.now())
 
+    #check if is passed more than 10 days from last message
     if time_passed < time_now:
         for message in all_messages:
             message.delete()

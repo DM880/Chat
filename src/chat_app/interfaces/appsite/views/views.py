@@ -12,7 +12,6 @@ from chat_app.data.chat.models import Room, Message
 from chat_app.domain.chat.tasks import time_check
 
 
-
 def sign(request):
     if request.user.is_authenticated:
         return redirect("create_room_chat")
@@ -88,15 +87,24 @@ def create_room_chat(request):
     if request.method == "POST":
         room_name = request.POST.get("room_name")
 
+        #if empty redirect to same page
+        if room_name == "":
+            return redirect(request.META.get("HTTP_REFERER", "sign"))
+
         if Room.objects.filter(name=room_name).exists() == False:
             Room.objects.create(name=room_name)
 
         else:
             room = Room.objects.get(name=room_name)
+            #check how how much time has passed since last message
             check = time_check(room)
 
+            #create new room if time passed is more than 10days
             if check == True:
                 Room.objects.create(name=room_name)
+
+        #add step to check if room has been called from a redirect
+        request.session['pp_create_room_chat'] = True
 
         return redirect("room", room_name)
 
@@ -106,14 +114,17 @@ def create_room_chat(request):
 @login_required
 def room(request, room_name):
 
-    room_messages = Room.objects.get(name=room_name)
+    #check if room has been called from a redirect
+    if 'pp_create_room_chat' in request.session:
 
-    all_messages = Message.objects.filter(room=room_messages)
+        room_messages = Room.objects.get(name=room_name)
 
-    username = request.user.username
+        all_messages = Message.objects.filter(room=room_messages)
 
-    return render(
-        request,
-        "chat_room.html",
-        {"room_name": room_name, "username": username, "all_messages": all_messages},
-    )
+        username = request.user.username
+
+        return render(
+            request,
+            "chat_room.html",
+            {"room_name": room_name, "username": username, "all_messages": all_messages},
+        )
