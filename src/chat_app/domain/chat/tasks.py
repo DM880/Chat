@@ -15,12 +15,12 @@ def time_check(room):
 
     all_messages = Message.objects.filter(room=room)
 
-    #last message timestamp + 10 days
+    # last message timestamp + 10 days
     time_passed = str(last_message.timestamp + relativedelta(days=+10))
 
     time_now = str(timezone.now())
 
-    #check if is passed more than 10 days from last message
+    # check if is passed more than 10 days from last message
     if time_passed < time_now:
         for message in all_messages:
             message.delete()

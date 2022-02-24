@@ -85,10 +85,10 @@ def sign_up(request):
 def create_room_chat(request):
 
     if request.method == "POST":
-        room_name = request.POST.get("room_name")
+        room_name = request.POST.get("room_name").lower()
 
-        #if empty redirect to same page
-        if room_name == "":
+        # if empty redirect to same page
+        if not room_name:
             return redirect(request.META.get("HTTP_REFERER", "sign"))
 
         if Room.objects.filter(name=room_name).exists() == False:
@@ -96,15 +96,15 @@ def create_room_chat(request):
 
         else:
             room = Room.objects.get(name=room_name)
-            #check how how much time has passed since last message
+            # check how how much time has passed since last message
             check = time_check(room)
 
-            #create new room if time passed is more than 10days
+            # create new room if time passed is more than 10days
             if check == True:
                 Room.objects.create(name=room_name)
 
-        #add step to check if room has been called from a redirect
-        request.session['pp_create_room_chat'] = True
+        # add step to check if room has been called from a redirect
+        request.session["pp_create_room_chat"] = True
 
         return redirect("room", room_name)
 
@@ -114,8 +114,8 @@ def create_room_chat(request):
 @login_required
 def room(request, room_name):
 
-    #check if room has been called from a redirect
-    if 'pp_create_room_chat' in request.session:
+    # check if room has been called from a redirect
+    if "pp_create_room_chat" in request.session:
 
         room_messages = Room.objects.get(name=room_name)
 
@@ -126,5 +126,9 @@ def room(request, room_name):
         return render(
             request,
             "chat_room.html",
-            {"room_name": room_name, "username": username, "all_messages": all_messages},
+            {
+                "room_name": room_name,
+                "username": username,
+                "all_messages": all_messages,
+            },
         )
