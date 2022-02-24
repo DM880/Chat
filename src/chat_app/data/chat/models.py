@@ -7,7 +7,7 @@ class Room(models.Model):
     name = models.CharField(max_length=50)
 
     def __str__(self):
-        return f"{self.room}"
+        return f"{self.name}"
 
 
 class Message(models.Model):
