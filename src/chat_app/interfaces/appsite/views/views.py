@@ -88,7 +88,7 @@ def create_room_chat(request):
         room_name = request.POST.get("room_name")
 
         #if empty redirect to same page
-        if room_name == "":
+        if not room_name:
             return redirect(request.META.get("HTTP_REFERER", "sign"))
 
         if Room.objects.filter(name=room_name).exists() == False:
