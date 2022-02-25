@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} {{room_name }} {% endblock %}
+{% block title %} {{room_name}} {% endblock %}
 
 {% block css %}<link rel="stylesheet" href="{% static 'css/room_chat.css' %}"> {% endblock %}
 
@@ -9,7 +9,7 @@
 
 {% block content %}
 
-<input type="hidden" id="me" value="{{ username }}">
+<input type="hidden" id="me" value="{{ request.user.username }}">
 
 <div id="chat-log">
 
@@ -34,7 +34,7 @@
 </div>
 
 <input id="chat-message-input" type="text" class="mess-input" placeholder="Write here..."></input>
-<input id="chat-message-submit" type="button" class="mess-input" value="Send">
+<input id="chat-message-submit" type="button" class="mess-input" value="Send" data-id=>
 
     {{ room_name|json_script:"room-name" }}
 
