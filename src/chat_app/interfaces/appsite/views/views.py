@@ -128,7 +128,6 @@ def room(request, room_name):
             "chat_room.html",
             {
                 "room_name": room_name,
-                "username": username,
                 "all_messages": all_messages,
             },
         )

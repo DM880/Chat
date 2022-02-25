@@ -11,12 +11,8 @@ const roomName = JSON.parse(document.getElementById('room-name').textContent);
             + '/'
         );
 
-    const month_names = ["January", "February", "March", "April", "May", "June",
-                          "July", "August", "September", "October", "November", "December"];
-
      chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
-            var username = document.getElementById('me').value;
 
             var time_data = new Date();
 
@@ -28,12 +24,12 @@ const roomName = JSON.parse(document.getElementById('room-name').textContent);
             // Get css class based on handler
             var classes = handler(data.message);
 
-            var txt = '<div class="message '+classes+'" value="'+data.username+'">'+ (data.message + '\n') +
-                    '<br><p class="timestamp">'+ timestamp +'</p></div>';
+            var html_message = '<div class="message '+classes+'">'
+                                + (data.message + '\n') + '<br><p class="timestamp">'+ timestamp +'</p></div>';
 
-            document.querySelector('#chat-log').innerHTML += txt;
+            document.querySelector('#chat-log').innerHTML += html_message;
 
-            // keep bottom page on added content
+            // Keep bottom page on added content
             window.scrollTo(0,document.body.scrollHeight);
         };
 
@@ -52,7 +48,7 @@ const roomName = JSON.parse(document.getElementById('room-name').textContent);
             const messageInputDom = document.querySelector('#chat-message-input');
             const message = messageInputDom.value;
             const room_name = JSON.parse(document.getElementById('room-name').textContent);
-            const username = document.getElementById('me').value;
+            const username = JSON.parse(document.getElementById('username').textContent);
             chatSocket.send(JSON.stringify({
                 'message': message,
                 'username': username,
@@ -65,7 +61,7 @@ const roomName = JSON.parse(document.getElementById('room-name').textContent);
 // Get css class
 function handler(message){
 
-    var username = document.getElementById('me').value;
+    var username = JSON.parse(document.getElementById('username').textContent);
 
     var sender = message.substr(0,username.length)
 
@@ -85,6 +81,9 @@ window.onload = function () {
 }
 
 // Timestamp functions
+
+const month_names = ["January", "February", "March", "April", "May", "June",
+                    "July", "August", "September", "October", "November", "December"];
 
 function getDate(timestamp){
     var month = month_names[timestamp.getMonth()].substring(0,3);
@@ -106,3 +105,9 @@ function getTime(timestamp){
     return time;
 }
 
+
+function random_color(){
+    var colors = ['#FF6464', '#FFE162', '#0000ff'];
+    var random = colors[Math.floor(Math.random() * colors.length)];
+    return random;
+}
