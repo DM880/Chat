@@ -44,7 +44,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             text_data=json.dumps({"message": message, "username": username})
         )
 
-    #Save message to database
+    # Save message to database
     @database_sync_to_async
     def create_mess_instance(self, text_data):
         text_data_json = json.loads(text_data)

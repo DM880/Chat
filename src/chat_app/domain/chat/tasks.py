@@ -32,4 +32,3 @@ def time_check(room):
 
 
 # def encrypt_messages(message):
-
