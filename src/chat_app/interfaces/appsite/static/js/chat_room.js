@@ -25,15 +25,13 @@ const roomName = JSON.parse(document.getElementById('room-name').textContent);
 
             var timestamp = date + ', ' + time;
 
+            // Get css class based on handler
+            var classes = handler(data.message);
 
-            if(username == data.username){
-                document.querySelector('#chat-log').innerHTML += '<div class="message sender-message">'+ (data.message + '\n') +
-                '<br><p class="timestamp">'+ timestamp +'</p></div>';
-            }
-            else{
-                document.querySelector('#chat-log').innerHTML += '<div class="message receiver-message">' + (data.message + '\n') +
-                '<br><p class="timestamp">'+timestamp+'</p></div>';
-            }
+            var txt = '<div class="message '+classes+'" value="'+data.username+'">'+ (data.message + '\n') +
+                    '<br><p class="timestamp">'+ timestamp +'</p></div>';
+
+            document.querySelector('#chat-log').innerHTML += txt;
 
             // keep bottom page on added content
             window.scrollTo(0,document.body.scrollHeight);
@@ -61,8 +59,24 @@ const roomName = JSON.parse(document.getElementById('room-name').textContent);
                 'room_name':room_name,
             }));
             messageInputDom.value = '';
-
         };
+
+
+// Get css class
+function handler(message){
+
+    var username = document.getElementById('me').value;
+
+    var sender = message.substr(0,username.length)
+
+    if(sender == username){
+        return 'sender-message';
+        }
+    else{
+        return 'receiver-message';
+        }
+}
+
 
 // Load page at bottom
 
@@ -84,10 +98,11 @@ function getDate(timestamp){
 function getTime(timestamp){
     var hours = timestamp.getHours();
     var minutes = timestamp.getMinutes();
-    var make_time = hours >= 12 ? 'pm' : 'am';
+    var make_time = hours >= 12 ? 'p.m.' : 'a.m.';
     hours = hours % 12;
     hours = hours ? hours : 12;
     minutes = minutes < 10 ? '0'+minutes : minutes;
     var time = hours + ':' + minutes + ' ' + make_time;
     return time;
 }
+

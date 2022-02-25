@@ -25,7 +25,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         username = self.scope["user"].username
         text_data_json = json.loads(text_data)
         message = text_data_json["message"]
-        message_user = username + ": " + message
+        message_user = username + ":" + message
 
         await self.create_mess_instance(text_data)
 
@@ -34,7 +34,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             {"type": "chat_message", "message": message_user, "username": username},
         )
 
-    # Receive message from room group
+    # Receive message from room chat
     async def chat_message(self, event):
         message = event["message"]
         username = self.scope["user"].username
@@ -44,6 +44,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             text_data=json.dumps({"message": message, "username": username})
         )
 
+    #Save message to database
     @database_sync_to_async
     def create_mess_instance(self, text_data):
         text_data_json = json.loads(text_data)

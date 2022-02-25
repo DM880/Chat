@@ -29,3 +29,7 @@ def time_check(room):
 
     else:
         return False
+
+
+# def encrypt_messages(message):
+
