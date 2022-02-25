@@ -9,21 +9,19 @@
 
 {% block content %}
 
-<input type="hidden" id="me" value="{{ request.user.username }}">
-
 <div id="chat-log">
 
     {% for message in all_messages.all %}
 
-    {% if username == message.handle %}
+    {% if request.user.username == message.handler %}
 
-        <div class="message sender-message">{{message.handle}}:{{ message.message }}
+        <div class="message sender-message">{{message.handler}}: {{message.message}}
         <br>
         <p class="timestamp">{{message.timestamp}}</p></div>
 
     {% else %}
 
-        <div class="message receiver-message">{{message.handle}}:{{ message.message }}
+        <div class="message receiver-message">{{message.handler}}: {{message.message}}
         <br>
         <p class="timestamp">{{message.timestamp}}</p></div>
 
@@ -37,6 +35,7 @@
 <input id="chat-message-submit" type="button" class="mess-input" value="Send" data-id=>
 
     {{ room_name|json_script:"room-name" }}
+    {{ request.user.username|json_script:"username" }}
 
 <script src="{% static 'js/chat_room.js' %}"></script>
 
