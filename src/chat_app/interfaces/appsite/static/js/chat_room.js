@@ -27,6 +27,7 @@ const roomName = JSON.parse(document.getElementById('room-name').textContent);
             var html_message = '<div class="message '+classes+'">'
                                 + (data.message + '\n') + '<br><p class="timestamp">'+ timestamp +'</p></div>';
 
+            // Show message
             document.querySelector('#chat-log').innerHTML += html_message;
 
             // Keep bottom page on added content
@@ -106,8 +107,8 @@ function getTime(timestamp){
 }
 
 
-function random_color(){
-    var colors = ['#FF6464', '#FFE162', '#0000ff'];
-    var random = colors[Math.floor(Math.random() * colors.length)];
-    return random;
-}
+// function random_color(){
+//     var colors = ['#FF6464', '#FFE162', '#0000ff'];
+//     var random = colors[Math.floor(Math.random() * colors.length)];
+//     return random;
+// }
