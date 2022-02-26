@@ -10,7 +10,7 @@ def time_check(room):
 
     last_message = Message.objects.filter(room=room).order_by("-timestamp").first()
 
-    #if empty no need to delete chat
+    # if empty no need to delete chat
     if not last_message:
         return False
 
