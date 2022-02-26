@@ -1,9 +1,10 @@
 from datetime import datetime, timedelta
 from dateutil.relativedelta import *
 from django.utils import timezone
+import math
 
 
-from chat_app.data.chat.models import Message
+from chat_app.data.chat.models import Room, Message
 
 
 def time_check(room):

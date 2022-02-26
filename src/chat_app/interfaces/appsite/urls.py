@@ -13,7 +13,7 @@ urlpatterns = [
     path("signup/", views.sign_up, name="sign_up"),
     # Chat
     path("create_room_chat/", views.create_room_chat, name="create_room_chat"),
-    path("chat/<str:room_name>", views.room, name="room"),
+    path("chat/<str:room_name>/", views.room, name="room"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
