@@ -114,11 +114,10 @@ def create_room_chat(request):
 @login_required
 def room(request, room_name):
 
-    # check if room has been called from a redirect
+    # check if room has been called from create_room_chat
     if "pp_create_room_chat" in request.session:
 
         room_messages = Room.objects.get(name=room_name)
-
         all_messages = Message.objects.filter(room=room_messages)
 
         return render(
