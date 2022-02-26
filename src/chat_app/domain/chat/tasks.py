@@ -3,7 +3,7 @@ from dateutil.relativedelta import *
 from django.utils import timezone
 
 
-from chat_app.data.chat.models import Room, Message
+from chat_app.data.chat.models import Message
 
 
 def time_check(room):

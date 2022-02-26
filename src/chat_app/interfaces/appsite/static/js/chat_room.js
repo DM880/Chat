@@ -27,6 +27,7 @@ const roomName = JSON.parse(document.getElementById('room-name').textContent);
             var html_message = '<div class="message '+classes+'">'
                                 + (data.message + '\n') + '<br><p class="timestamp">'+ timestamp +'</p></div>';
 
+            // Shoe message
             document.querySelector('#chat-log').innerHTML += html_message;
 
             // Keep bottom page on added content

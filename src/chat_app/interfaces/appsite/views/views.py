@@ -121,8 +121,6 @@ def room(request, room_name):
 
         all_messages = Message.objects.filter(room=room_messages)
 
-        username = request.user.username
-
         return render(
             request,
             "chat_room.html",
