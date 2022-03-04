@@ -1,3 +1,8 @@
+body{
+  background: url('../img/chat_background.png') repeat;
+  background-size: 600px auto;
+}
+
 .message{
   border: none;
   border-radius: 10px;
