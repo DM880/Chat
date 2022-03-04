@@ -1,16 +1,16 @@
-function openInfo(){
-  document.getElementById('info').style.display = 'block';
-}
+var info_menu = document.getElementById('info-menu');
+var info = document.getElementById('info');
+
+  info_menu.addEventListener('mouseover',function(){
+    info.style.display = 'block';
+});
+
+  info_menu.addEventListener('mouseleave',function(){
+    info.style.display = 'none';
+});
 
 
-function closeInfo(){
-  document.getElementById('info').style.display = 'none';
-}
-
-
-function openCloseInfo(){
- var info = document.getElementById('info');
-
+  info_menu.addEventListener('click',function(){
  if(info.style.display == 'block')
  {
    info.style.display = 'none';
@@ -18,5 +18,4 @@ function openCloseInfo(){
   else{
     info.style.display = 'block';
   }
-
-}
+});
