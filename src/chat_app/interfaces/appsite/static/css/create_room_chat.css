@@ -53,3 +53,15 @@ body{
 .description li{
   margin-bottom: 20px;
 }
+
+
+@media screen and (max-width: 520px){
+  .wrapper, .room-create{
+    width:100%;
+    margin-top: 40%;
+  }
+
+  button{
+    margin-top: 10px;
+  }
+}

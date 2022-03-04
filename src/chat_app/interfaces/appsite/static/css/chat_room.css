@@ -1,0 +1,87 @@
+body{
+  background: url('../img/chat_background.png') repeat;
+  background-size: 600px auto;
+}
+
+.message{
+  border: none;
+  border-radius: 10px;
+  width: auto;
+  max-width: 340px;
+  height: auto;
+  word-break: break-all;
+  padding: 10px;
+  margin-top: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.message:last-child{
+  margin-bottom: 70px;
+}
+
+.sender-message{
+  background-color: #006AFF;
+  color: white;
+}
+
+.receiver-message{
+  background-color: #FFE162;
+  color: black;
+}
+
+.time-mess{
+  margin-top: -15px;
+  margin-bottom:-10px;
+  opacity:0.5;
+}
+
+.timestamp{
+  opacity:0.5;
+  font-size:12px;
+  margin-bottom:-10px;
+}
+
+.mess-input{
+  position:fixed;
+  bottom: 20px;
+  right: 50px;
+  border: solid 2px #006AFF;
+  font-family: 'Roboto', sans-serif;
+}
+
+#chat-message-input{
+  width: 250px;
+  height: 40px;
+  margin-right: 50px;
+  border-top-left-radius:5px;
+  border-bottom-left-radius: 5px;
+}
+
+#chat-message-input:focus{
+  outline: none !important;
+  box-shadow: 0 0 10px #719ECE;
+}
+
+#chat-message-submit{
+  height: 40px;
+  width: 60px;
+  border-top-right-radius:5px;
+  border-bottom-right-radius: 5px;
+  color: white;
+  background-color: #006AFF;
+}
+
+#chat-message-submit:hover{
+  background-color: #2666CF;
+}
+
+@media screen and (max-width: 400px) {
+  .mess-input{
+    right: 5px;
+  }
+
+  #chat-message-input{
+    width: 150px;
+  }
+}
