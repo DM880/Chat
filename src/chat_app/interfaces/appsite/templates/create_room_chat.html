@@ -4,7 +4,6 @@
 {% block title %}Create Room Chat{% endblock %}
 
 {% block css %}<link rel="stylesheet" href="{% static 'css/create_room_chat.css' %}">{% endblock %}
-
 {% block content %}
 
 <div class="wrapper">
@@ -18,7 +17,10 @@
   </div>
 </div>
 
+
 <div class="description">
+  <i onmouseover="openInfo()" onmouseleave="closeInfo()" onclick="openCloseInfo()" class="fa-solid fa-circle-info"></i>
+  <div id="info">
   <ul>
     <li>
       Write room chat name inside input.
@@ -30,6 +32,9 @@
       A room chat that is not used for more than 10 days will be automatically deleted.
     </li>
   </ul>
+  </div>
 </div>
+
+<script src="{% static 'js/create_room_chat.js' %}"></script>
 
 {% endblock %}
