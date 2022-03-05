@@ -1,5 +1,12 @@
 body{
-  background-color: #0E49B5;
+  background-color: #5271FF;
+}
+
+img{
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+  z-index: -1;
 }
 
 .wrapper{
@@ -11,7 +18,8 @@ body{
   width: 500px;
   margin: auto;
   margin-top: 10%;
-  border: solid grey 1px;
+  border: solid 4px red;
+  border-radius: 5px;
   text-align: center;
   padding-top: 50px;
   padding-bottom: 50px;
@@ -47,11 +55,26 @@ body{
   margin-top: 100px;
   width: auto;
   color: white;
-  font-weight:bold;
+  font-weight: bold;
 }
 
 .description li{
   margin-bottom: 20px;
+}
+
+#info{
+  background-color: #ECECEC;
+  margin-left: 20px;
+  border-radius: 5px;
+  width: 90%;
+  color: #5463FF;
+  display: none;
+  z-index: 99;
+}
+
+.fa-circle-info{
+  font-size: 45px;
+  margin-left: 10px;
 }
 
 
