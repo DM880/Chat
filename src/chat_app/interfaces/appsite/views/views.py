@@ -78,6 +78,12 @@ def sign_up(request):
         return redirect("sign")
 
 
+@login_required
+def sign_out(request):
+    logout(request)
+    return redirect("sign")
+
+
 # Chat Room
 
 
