@@ -1,6 +1,12 @@
 body{
-  background: url('../img/create_room_chat.png') repeat;
-  background-size: 600px auto;
+  background-color: #5271FF;
+}
+
+img{
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+  z-index: -1;
 }
 
 .wrapper{
@@ -12,7 +18,8 @@ body{
   width: 500px;
   margin: auto;
   margin-top: 10%;
-  border: solid grey 1px;
+  border: solid 4px red;
+  border-radius: 5px;
   text-align: center;
   padding-top: 50px;
   padding-bottom: 50px;
@@ -62,6 +69,7 @@ body{
   width: 90%;
   color: #5463FF;
   display: none;
+  z-index: 99;
 }
 
 .fa-circle-info{
