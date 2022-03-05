@@ -11,10 +11,9 @@ body{
 .room-create{
   width: 500px;
   margin: auto;
-  margin-top: 10%;
+  margin-top: 15%;
   border-radius: 5px;
   text-align: center;
-  padding-top: 50px;
   padding-bottom: 50px;
   font-family: 'Saira Condensed', sans-serif;
   color: #F1D00A;
@@ -85,7 +84,7 @@ body{
 img{
   position: absolute;
   bottom: 0;
-  z-index: -1;
+  z-index: 1;
   height: 300px;
   right: 10px;
   cursor: pointer;
@@ -127,9 +126,14 @@ img{
 @media screen and (max-width: 520px){
   .room-create{
     width:100%;
+    margin-top: 20%;
   }
 
   button{
     margin-top: 10px;
+  }
+
+  img{
+    z-index: -1;
   }
 }
