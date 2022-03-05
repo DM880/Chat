@@ -9,6 +9,8 @@
 
 {% block content %}
 
+{% include 'nav_menu.html' %}
+
 <div id="chat-log">
 
     {% for message in all_messages.all %}

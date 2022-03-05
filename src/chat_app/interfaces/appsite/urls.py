@@ -11,6 +11,7 @@ urlpatterns = [
     path("", views.sign, name="sign"),
     path("signin/", views.sign_in, name="sign_in"),
     path("signup/", views.sign_up, name="sign_up"),
+    path("signout/", views.sign_out, name="signout"),
     # Chat
     path("create_room_chat/", views.create_room_chat, name="create_room_chat"),
     path("chat/<str:room_name>/", views.room, name="room"),

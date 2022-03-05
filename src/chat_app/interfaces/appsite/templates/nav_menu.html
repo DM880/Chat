@@ -1,0 +1,57 @@
+<i onclick="openNavMenu()" class="fa-solid fa-ellipsis-vertical" title="Menu"></i>
+
+<div id="nav-menu">
+  <ul>
+    <li><a href="{% url 'create_room_chat' %}">Back</a></li>
+    <li><a href="{% url 'signout' %}">Log out</a></li>
+  </ul>
+</div>
+
+<script>
+
+function openNavMenu(){
+    var nav_menu = document.getElementById("nav-menu");
+    if(nav_menu.style.display == 'none'){
+        nav_menu.style.display = 'block';
+    }
+    else{
+        nav_menu.style.display = 'none'
+    }
+}
+
+</script>
+
+<style>
+.fa-ellipsis-vertical{
+    font-size: 40px;
+    position: fixed;
+    right: 20px;
+    top: 5px;
+    color: #FF1818;
+    cursor: pointer;
+}
+
+#nav-menu{
+    position: fixed;
+    top: 50px;
+    right: 10px;
+    background-color: white;
+    display: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    width: 150px;
+    text-align: center;
+    padding-right: 30px;
+    padding-top: 15px;
+}
+
+#nav-menu ul li{
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+#nav-menu a{
+    text-decoration: none;
+    color: #FF1818;
+}
+</style>
