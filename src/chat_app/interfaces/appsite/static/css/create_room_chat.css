@@ -2,13 +2,6 @@ body{
   background-color: #5271FF;
 }
 
-img{
-  position: absolute;
-  right: 10px;
-  bottom: 0;
-  z-index: -1;
-}
-
 .wrapper{
   width:100%;
 }
@@ -51,6 +44,23 @@ img{
   height: 38px;
 }
 
+/*Info*/
+
+.fa-circle-info{
+  font-size: 45px;
+  margin-left: 10px;
+}
+
+#info{
+  background-color: #ECECEC;
+  margin-left: 20px;
+  border-radius: 5px;
+  width: 70%;
+  color: #5463FF;
+  display: none;
+  z-index: 99;
+}
+
 .description{
   margin-top: 100px;
   width: auto;
@@ -62,26 +72,53 @@ img{
   margin-bottom: 20px;
 }
 
-#info{
-  background-color: #ECECEC;
-  margin-left: 20px;
-  border-radius: 5px;
-  width: 90%;
-  color: #5463FF;
+/*Robot*/
+
+img{
+  position: absolute;
+  bottom: 0;
+  z-index: -1;
+  height: 300px;
+  right: 10px;
+}
+
+#robot_after{
   display: none;
-  z-index: 99;
+  right: 60px;
 }
 
-.fa-circle-info{
-  font-size: 45px;
-  margin-left: 10px;
+#my-info-container{
+  display: none;
 }
 
+.my-info{
+  position:absolute;
+  bottom: 330px;
+  right: 30px;
+  padding: 10px;
+  background-color: white;
+  width: 200px;
+  border-color: solid 1px black;
+  border-radius: 5px;
+}
+
+.triangle{
+  position:absolute;
+  bottom: 310px;
+  right: 60px;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid white;
+}
+
+/*Phone*/
 
 @media screen and (max-width: 520px){
   .wrapper, .room-create{
     width:100%;
-    margin-top: 40%;
+    margin-top: 20%;
   }
 
   button{
