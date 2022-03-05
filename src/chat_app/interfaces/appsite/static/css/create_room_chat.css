@@ -55,7 +55,7 @@ body{
   background-color: #ECECEC;
   margin-left: 20px;
   border-radius: 5px;
-  width: 90%;
+  width: 70%;
   color: #5463FF;
   display: none;
   z-index: 99;
@@ -80,15 +80,6 @@ img{
   z-index: -1;
   height: 300px;
   right: 10px;
-}
-
-#robot-container{
-  width: 350px;
-  height: 450px;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: -9;
 }
 
 #robot_after{
@@ -127,7 +118,7 @@ img{
 @media screen and (max-width: 520px){
   .wrapper, .room-create{
     width:100%;
-    margin-top: 40%;
+    margin-top: 20%;
   }
 
   button{
