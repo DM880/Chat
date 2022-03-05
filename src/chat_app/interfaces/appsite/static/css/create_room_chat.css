@@ -2,13 +2,6 @@ body{
   background-color: #5271FF;
 }
 
-img{
-  position: absolute;
-  right: 10px;
-  bottom: 0;
-  z-index: -1;
-}
-
 .wrapper{
   width:100%;
 }
@@ -51,15 +44,11 @@ img{
   height: 38px;
 }
 
-.description{
-  margin-top: 100px;
-  width: auto;
-  color: white;
-  font-weight: bold;
-}
+/*Info*/
 
-.description li{
-  margin-bottom: 20px;
+.fa-circle-info{
+  font-size: 45px;
+  margin-left: 10px;
 }
 
 #info{
@@ -72,11 +61,68 @@ img{
   z-index: 99;
 }
 
-.fa-circle-info{
-  font-size: 45px;
-  margin-left: 10px;
+.description{
+  margin-top: 100px;
+  width: auto;
+  color: white;
+  font-weight: bold;
 }
 
+.description li{
+  margin-bottom: 20px;
+}
+
+/*Robot*/
+
+img{
+  position: absolute;
+  bottom: 0;
+  z-index: -1;
+  height: 300px;
+  right: 10px;
+}
+
+#robot-container{
+  width: 350px;
+  height: 450px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -9;
+}
+
+#robot_after{
+  display: none;
+  right: 60px;
+}
+
+#my-info-container{
+  display: none;
+}
+
+.my-info{
+  position:absolute;
+  bottom: 330px;
+  right: 30px;
+  padding: 10px;
+  background-color: white;
+  width: 200px;
+  border-color: solid 1px black;
+  border-radius: 5px;
+}
+
+.triangle{
+  position:absolute;
+  bottom: 310px;
+  right: 60px;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid white;
+}
+
+/*Phone*/
 
 @media screen and (max-width: 520px){
   .wrapper, .room-create{
