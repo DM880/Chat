@@ -1,16 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@700&display=swap');
+
+
 html, body {
-    height: 100%;
+  height: 100%;
 }
 
 html {
-    display: table;
-    margin: auto;
+  display: table;
+  margin: auto;
 }
 
 body {
-    display: table-cell;
-    vertical-align: middle;
-    background-color: #EDEDED;
+  display: table-cell;
+  vertical-align: middle;
+  background-color: #323232;
+}
+
+.line{
+  border-right:solid 3px;
+  height: 100%;
+  border-color: white;
+}
+
+.signin{
+  margin-top:-50px;
+  margin-right:50px;
+  margin-bottom:50px;
+}
+
+.sign-txt{
+  font-weight: bold;
+  color: white;
+  font-size: 60px;
+  font-family: 'Saira Condensed', sans-serif;
+  letter-spacing: 3px;
 }
 
 .phone{
@@ -21,48 +44,60 @@ body {
   display:flex;
   height: 250px;
   width: 500px;
-  border: solid 2px grey;
-  border-radius: 5px;
   text-align: center;
-  background-color: #B4AEE8;
 }
-
-  .login-div{
-    margin:30% auto;
-    height: 50%;
-    width:100%;
-  }
+.login-div{
+  margin:30% auto;
+  height: 50%;
+  width:100%;
+  padding-right: 50px;
+}
 
 .create-div{
   width: 50%;
   align-items: center;
   margin:auto;
+  padding-left: 50px;
 }
 
 .center-login-div{
   width: 50%;
-  border-right: solid 1px grey;
   height:100%;
-  background-color: #FFDF6B;
+}
+
+.center-login-div h2{
+  margin-bottom: -30px;
 }
 
 input{
   margin-bottom: 10px;
+  border:none;
+  height: 40px;
+  padding: 10px;
+  border-radius: 5px;
 }
+
+.login-div input:focus{
+  outline: none !important;
+  box-shadow: 0 0 10px #7952B3;
+}
+
 
 button{
   border:solid transparent;
   font-weight: bold;
-  padding: 7px;
+  padding: 10px;
   transition: all 0.3s ease;
   color: white;
   border-radius: 5px;
-  cursor: pointer;
+  font-size: 25px;
+  margin-top: 15px;
+  font-family: 'Saira Condensed', sans-serif;
+  letter-spacing: 3px;
 }
 
 #btn-signin{
   background-color: #7952B3;
-  margin-top:10px;
 }
 
 #btn-signin:hover{
@@ -79,6 +114,11 @@ button{
   color: #FFC107;
   background-color: white;
   border-color: #FFC107;
+}
+
+.create-div input:focus{
+  outline: none !important;
+  box-shadow: 0 0 10px #FFC107;
 }
 
 @media (max-width:500px){
