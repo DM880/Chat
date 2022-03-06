@@ -121,22 +121,48 @@ button{
   box-shadow: 0 0 10px #FFC107;
 }
 
+hr{
+  display:none;
+}
+
 @media (max-width:500px){
   .center-login-div{
     width: 100%;
     position:relative;
     text-align: center;
-    padding: 2px;
-    border: solid 1px grey;
+    margin-bottom: -70px;
   }
+
+  .login-div{
+    width: 100%;
+    padding: 0;
+  }
+
+  .signin{
+    margin-top: 50px;
+    margin-bottom: -40px;
+    margin-right: 0;
+
+  }
+
+  .line{
+    display: none;
+  }
+
   .create-div{
     width: 100%;
     position:relative;
     text-align: center;
     padding-top: 20px;
     padding-bottom: 20px;
-    background-color: #B4AEE8;
-    border: solid 1px grey;
+    padding-left: 0;
+  }
+
+  hr{
+    display: block;
+    color: white;
+    margin: 50px;
+    border: none;
   }
 
 }

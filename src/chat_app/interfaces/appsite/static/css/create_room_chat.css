@@ -1,14 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@700&display=swap');
 
 body{
-  background-color: #5463FF;
+  /*background-color: #323232;*/
+  background:url('../img/create_room_background.png');
+  background-size: cover;
 }
 
 .fa-right-from-bracket{
   position: absolute;
   top: 10px;
   right: 10px;
-  color: #FF1818;
+  color: #7952B3;
   cursor: pointer;
   font-size: 30px;
 }
@@ -30,7 +32,7 @@ body{
   border-radius: 5px;
   text-align: center;
   font-family: 'Saira Condensed', sans-serif;
-  color: #F1D00A;
+  color: #FFC107;
 }
 
 .room-create h2{
@@ -70,6 +72,10 @@ body{
 .fa-circle-info{
   font-size: 45px;
   margin-left: 10px;
+}
+
+.fa-circle-info:hover{
+  color: #5463FF;
 }
 
 #info{
