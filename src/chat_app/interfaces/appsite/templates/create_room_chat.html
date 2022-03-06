@@ -6,6 +6,8 @@
 {% block css %}<link rel="stylesheet" href="{% static 'css/create_room_chat.css' %}">{% endblock %}
 {% block content %}
 
+<a href="{% url 'signout' %}"><i class="fa-solid fa-right-from-bracket" title="Sign out"></i></a>
+
 <div class="wrapper">
   <div class="room-create">
     <form method="post" action="{% url 'create_room_chat' %}">
