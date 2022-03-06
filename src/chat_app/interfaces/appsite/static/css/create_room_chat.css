@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@700&display=swap');
 
 body{
-  /*background-color: #323232;*/
   background:url('../img/create_room_background.png');
   background-size: cover;
 }
@@ -23,7 +22,7 @@ body{
   width:100%;
 }
 
-/*Create/Join Room*/
+/*Create-Join Room*/
 
 .room-create{
   width: 500px;

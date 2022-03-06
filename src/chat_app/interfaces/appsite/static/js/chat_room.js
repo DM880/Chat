@@ -105,10 +105,3 @@ function getTime(timestamp){
     var time = hours + ':' + minutes + ' ' + make_time;
     return time;
 }
-
-
-// function random_color(){
-//     var colors = ['#FF6464', '#FFE162', '#0000ff'];
-//     var random = colors[Math.floor(Math.random() * colors.length)];
-//     return random;
-// }
