@@ -28,7 +28,7 @@
 <hr>
   <div class="line"></div>
   <div class="create-div">
-    <h2 style="margin-top:-50px;margin-bottom: 50px;" class="sign-txt">Sign Up</h2>
+    <h2 class="sign-txt signup">Sign Up</h2>
     <form action="{% url 'sign_up' %}" method="POST">
       {% csrf_token %}
       <input name="username_signup" placeholder="username" required="true"></input>
