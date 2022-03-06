@@ -4,9 +4,24 @@ body{
   background-color: #5463FF;
 }
 
+.fa-right-from-bracket{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #FF1818;
+  cursor: pointer;
+  font-size: 30px;
+}
+
+.fa-right-from-bracket:hover{
+  color: #DA1212;
+}
+
 .wrapper{
   width:100%;
 }
+
+/*Create/Join Room*/
 
 .room-create{
   width: 500px;
@@ -14,7 +29,6 @@ body{
   margin-top: 15%;
   border-radius: 5px;
   text-align: center;
-  padding-bottom: 50px;
   font-family: 'Saira Condensed', sans-serif;
   color: #F1D00A;
 }
