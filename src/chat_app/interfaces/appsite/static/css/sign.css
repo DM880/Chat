@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@700&display=swap');
 
-html, body {
+html{
   height: 100%;
 }
 
@@ -10,10 +10,17 @@ html {
 }
 
 body {
+  min-height: 100%;
   display: table-cell;
   vertical-align: middle;
   background-color: #323232;
   font-family: 'Saira Condensed', sans-serif;
+}
+
+#message-div{
+  text-align:center;
+  margin-bottom:80px;
+  font-size: 28px;
 }
 
 .line{
@@ -52,6 +59,7 @@ body {
   width: 500px;
   text-align: center;
 }
+
 .login-div{
   margin:30% auto;
   height: 50%;
@@ -111,11 +119,11 @@ button{
   border-color: #7952B3;
 }
 
-#btn-signup{
+#btn-submit{
   background-color: #FFC107;
 }
 
-#btn-signup:hover{
+#btn-submit:hover{
   color: #FFC107;
   background-color: white;
   border-color: #FFC107;
@@ -131,6 +139,24 @@ hr{
 }
 
 @media only screen and (max-width:500px){
+
+  body{
+    vertical-align: baseline;
+  }
+
+  #message-div{
+    margin-top:50px;
+    margin-bottom: 60px;
+  }
+
+  .wrap{
+    display:block;
+    height: 400px;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
   .center-login-div{
     width: 100%;
     position:relative;
@@ -141,6 +167,7 @@ hr{
   .login-div{
     width: 100%;
     padding: 0;
+    margin-top: 50px;
   }
 
   .signin{
