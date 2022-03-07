@@ -199,7 +199,7 @@ def enter_key(request, room_name):
                 return redirect('room', room_name)
 
             else:
-                render(request,'enter_key.html', {'room_name':room_name, 'error':True})
+                render(request,'enter_key.html', {'room_name':room_name})
 
         return render(request,'enter_key.html', {'room_name':room_name})
 
