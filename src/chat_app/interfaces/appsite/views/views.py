@@ -100,6 +100,10 @@ def create_room_chat(request):
         if Room.objects.filter(name=room_name).exists() == False:
             Room.objects.create(name=room_name)
 
+            # add step to check if room has been called from a redirect
+            request.session[f"pp_create_room_chat_{room_name}"] = True
+            return redirect("choose_create_chat", room_name)
+
         else:
             room = Room.objects.get(name=room_name)
             # check how how much time has passed since last message
@@ -109,19 +113,72 @@ def create_room_chat(request):
             if check == True:
                 Room.objects.create(name=room_name)
 
-        # add step to check if room has been called from a redirect
-        request.session["pp_create_room_chat"] = True
+                request.session[f"pp_create_room_chat_{room_name}"] = True
+                return redirect("choose_create_chat", room_name)
 
-        return redirect("room", room_name)
+            if room.private == False:
+                request.session[f"chat_access_{room_name}"] = True
+                return redirect("room", room_name)
+
+            else:
+                request.session[f"enter_key_access_{room_name}"] = True
+                return redirect("enter_key", room_name)
 
     return render(request, "create_room_chat.html")
 
 
 @login_required
-def room(request, room_name):
+def choose_create_chat(request, room_name):
 
     # check if room has been called from create_room_chat
-    if "pp_create_room_chat" in request.session:
+    if f"pp_create_room_chat_{room_name}" in request.session:
+
+        if request.method == "POST":
+
+            is_private = request.POST.get('private')
+            key = request.POST.get('key')
+
+            if is_private == 'public':
+                return redirect('room', room_name)
+
+            else:
+                room = Room.objects.get(name=room_name)
+                room.private = True
+                room.key = key
+                room.save()
+
+                request.session[f"chat_access_{room_name}"] = True
+
+                return redirect('room', room_name)
+
+        return render(request, "choose_create_chat.html", {'room_name':room_name})
+
+
+@login_required
+def enter_key(request, room_name):
+
+    if f"enter_key_access_{room_name}" in request.session:
+
+        if request.method == "POST":
+
+            check_key = request.POST.get('check_key')
+
+            room = Room.objects.get(name=room_name)
+
+            if check_key == room.key:
+                request.session[f"chat_access_{room_name}"] = True
+                return redirect('room', room_name)
+
+            else:
+                render(request,'enter_key.html', {'room_name':room_name, 'error':True})
+
+        return render(request,'enter_key.html', {'room_name':room_name})
+
+
+@login_required
+def room(request, room_name):
+
+    if f"chat_access_{room_name}" in request.session:
 
         room_messages = Room.objects.get(name=room_name)
         all_messages = Message.objects.filter(room=room_messages)

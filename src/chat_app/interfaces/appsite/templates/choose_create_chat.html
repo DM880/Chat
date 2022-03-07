@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Public or Private {% endblock %}
+
+{% block css %} <link rel="stylesheet" href="{% static 'css/choose_create_chat.css' %}"> {% endblock %}
+
+{% block content %}
+
+{% include 'nav_menu.html' %}
+
+<div class="wrapper">
+  <div class="room-create">
+    <form method="post" action="{% url 'choose_create_chat' room_name %}">
+      {% csrf_token %}
+    <h2>Do you want your chat to be</h2>
+    <input type="checkbox" onclick="check(this);hideKey(this);" class="type-chat" value="Public" name="private" checked><label>Public</label>
+    <input type="checkbox" onclick="check(this);showKey(this);" class="type-chat" id="private-chat" value="Private" name="private"><label>Private</label>
+     <br>
+    <input id="create-key" placeholder="Choose Key" name="key"></input>
+    <br>
+  <button type="submit">Submit</button>
+  </form>
+  </div>
+</div>
+
+<script src="{% static 'js/choose_create_chat.js' %}"></script>
+
+{% endblock %}

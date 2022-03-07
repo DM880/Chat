@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@700&display=swap');
+
+
+body{
+  background:url('../img/create_room_background.png');
+  background-size: cover;
+}
+
+/*Choose Room*/
+
+.room-create{
+  width: 500px;
+  margin: auto;
+  margin-top: 10%;
+  border-radius: 5px;
+  text-align: center;
+  font-family: 'Saira Condensed', sans-serif;
+  color: #FFC107;
+}
+
+.room-create h2{
+  margin-bottom: 50px;
+  font-weight: bold;
+  font-size: 70px;
+}
+
+.room-create button{
+  color: white;
+  background-color: #85EF47;
+  border:none;
+  padding:10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.room-create button:hover{
+  background-color:#54E346;
+}
+
+#check-key{
+  height: 38px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 15px;
+}
+
+#check-key:focus{
+  outline: none !important;
+  box-shadow: 0 0 10px #F1D00A;
+}
+
+#create-key{
+  height: 38px;
+  border-radius: 5px;
+  border: none;
+  opacity: 0;
+  margin-bottom: 15px;
+}
+
+#create-key:focus{
+  outline: none !important;
+  box-shadow: 0 0 10px #F1D00A;
+}
+
+.type-chat{
+  margin-top: 10px;
+  margin-right: 5px;
+  margin-left: 10px;
+  margin-bottom: 30px;
+  height: 25px;
+  width: 25px;
+}
+
+label{
+  margin-right: 20px;
+  font-size: 25px;
+}
