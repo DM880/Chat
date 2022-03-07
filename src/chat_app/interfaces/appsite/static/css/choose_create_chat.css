@@ -9,9 +9,9 @@ body{
 /*Choose Room*/
 
 .room-create{
-  width: 500px;
+  max-width: 500px;
   margin: auto;
-  margin-top: 10%;
+  margin-top: 20%;
   border-radius: 5px;
   text-align: center;
   font-family: 'Saira Condensed', sans-serif;
