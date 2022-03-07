@@ -8,7 +8,7 @@
 
 {% block content %}
 
-  {% if message %}<div style="position:absolute;top:0;"><h3 style="color:blue;">{{ message }}</h3></div>{% endif %}
+  {% if message %}<div style="text-align:center;margin-top:-200px;margin-bottom:100px;"><h3 style="color:#DA1212;">{{ message }}</h3></div>{% endif %}
 
 <div id="wrap-div" class="wrap">
   <div class="center-login-div">
@@ -19,7 +19,7 @@
   <input name="username" placeholder="username" required="true"></input>
   <input name="password" placeholder="password" type="password" required="true"></input>
   <br>
-  <a href="" style="font-size:20px;font-family: 'Saira Condensed', sans-serif;">Forgotten Password?</a>
+  <a href="{% url 'reset_password' %}" style="font-size:20px;font-family: 'Saira Condensed', sans-serif;">Forgotten Password?</a>
   <br>
   <button id="btn-signin" type="submit" title="Sign In">Sign In</button>
     </form>

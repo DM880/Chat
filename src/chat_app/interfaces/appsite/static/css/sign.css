@@ -13,6 +13,7 @@ body {
   display: table-cell;
   vertical-align: middle;
   background-color: #323232;
+  font-family: 'Saira Condensed', sans-serif;
 }
 
 .line{
@@ -97,7 +98,6 @@ button{
   border-radius: 5px;
   font-size: 25px;
   margin-top: 15px;
-  font-family: 'Saira Condensed', sans-serif;
   letter-spacing: 3px;
 }
 

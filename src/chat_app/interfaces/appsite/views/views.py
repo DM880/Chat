@@ -78,6 +78,35 @@ def sign_up(request):
         return redirect("sign")
 
 
+def reset_password(request):
+
+    if request.method == "POST":
+
+        username = request.POST.get("username")
+        email = request.POST.get("email")
+        password1 = request.POST.get("password1")
+        password2 = request.POST.get("password2")
+
+        try:
+            user = User.objects.get(username=username, email=email)
+        except User.DoesNotExist:
+            message = 'username or email invalid'
+            return render(request, 'reset_password.html', {"message":message})
+
+        if password1 != password2:
+            message = "Passwords don't match"
+            return render(request, 'reset_password.html', {"message": message})
+
+        user.set_password(password1)
+        user.save()
+
+        return redirect('sign')
+
+    return render(request, 'reset_password.html',)
+
+
+
+
 @login_required
 def sign_out(request):
     logout(request)
