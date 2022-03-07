@@ -8,9 +8,12 @@
 
 {% block content %}
 
-  {% if message %}<div style="text-align:center;margin-top:-200px;margin-bottom:100px;"><h3 style="color:#DA1212;">{{ message }}</h3></div>{% endif %}
+<div id="message-div" {% if message %}style="color:#DA1212;"{% endif %}{%if success %}style="color:#6ECB63;"{% endif %}>
+  <h3>{% if message %}{{ message }}{% endif %}{% if success %}{{ success }}{% endif %}</h3>
+</div>
 
 <div id="wrap-div" class="wrap">
+
   <div class="center-login-div">
     <h2 class="sign-txt signin">Sign In</h2>
   <div class="login-div">
@@ -19,7 +22,7 @@
   <input name="username" placeholder="username" required="true"></input>
   <input name="password" placeholder="password" type="password" required="true"></input>
   <br>
-  <a href="{% url 'reset_password' %}" style="font-size:20px;font-family: 'Saira Condensed', sans-serif;">Forgotten Password?</a>
+  <a href="{% url 'reset_password' %}" style="font-size:20px;">Forgotten Password?</a>
   <br>
   <button id="btn-signin" type="submit" title="Sign In">Sign In</button>
     </form>
@@ -33,10 +36,10 @@
       {% csrf_token %}
       <input name="username_signup" placeholder="username" required="true"></input>
       <input name="email_signup" placeholder="email" type="email" required="true"></input>
-      <input name="password1" placeholder="password" type="password" required="true"></input>
-      <input name="password2" placeholder="confirm password" type="password" required="true"></input>
+      <input id="password1" name="password1" placeholder="password" type="password" required="true" onkeyup="check_password();"></input>
+      <input id="password2" name="password2" placeholder="confirm password" type="password" required="true" onkeyup="check_password();"></input>
     <br>
-<button id="btn-signup" type="submit" title="Create Account">Sign Up</button>
+<button id="btn-submit" type="submit" title="Create Account">Sign Up</button>
     </form>
   </div>
 </div>

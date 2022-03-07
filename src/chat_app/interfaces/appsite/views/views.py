@@ -45,6 +45,8 @@ def sign_up(request):
 
     if request.method == "POST":
 
+        message = ""
+
         username = request.POST.get("username_signup")
         email = request.POST.get("email_signup")
         password1 = request.POST.get("password1")
@@ -70,9 +72,9 @@ def sign_up(request):
 
         user = User.objects.create_user(**user_data)
 
-        message = "Account created successfully"
+        success = "Account created successfully"
 
-        return render(request, "sign.html", {"message": message})
+        return render(request, "sign.html", {"message": message, "success":success})
 
     else:
         return redirect("sign")
@@ -103,8 +105,6 @@ def reset_password(request):
         return redirect('sign')
 
     return render(request, 'reset_password.html',)
-
-
 
 
 @login_required
