@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Enter Key{% endblock %}
+
+{% block css %} <link rel="stylesheet" href="{% static 'css/choose_create_chat.css' %}"> {% endblock %}
+
+{% block content %}
+
+{% include 'nav_menu.html' %}
+
+<div class="wrapper">
+  <div class="room-create">
+    <form method="post" action="{% url 'enter_key' room_name %}">
+      {% csrf_token %}
+    <h2>Enter key to access private chat</h2>
+    <input id="check-key" placeholder="Enter Key" name="check_key"></input>
+    <br>
+  <button type="submit">Submit</button>
+  </form>
+  </div>
+  {% if error %}<h2 style="color:#DA1212;font-size:20px;">Wrong key entered</h2>{% endif %}
+
+</div>
+
+{% endblock %}
