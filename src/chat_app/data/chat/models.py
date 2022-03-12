@@ -7,6 +7,7 @@ class Room(models.Model):
     name = models.CharField(max_length=50)
     private = models.BooleanField(default=False)
     key = models.CharField(null=True,blank=True,max_length=50)
+    created = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return f"{self.name}"

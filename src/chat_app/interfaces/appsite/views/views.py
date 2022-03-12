@@ -135,10 +135,10 @@ def create_room_chat(request):
 
         else:
             room = Room.objects.get(name=room_name)
-            # check how how much time has passed since last message
+            # check how how much time has passed since last message/creation room
             check = time_check(room)
 
-            # create new room if time passed is more than 10days
+            # create new room if time passed is more than 5days
             if check == True:
                 Room.objects.create(name=room_name)
 
@@ -167,7 +167,8 @@ def choose_create_chat(request, room_name):
             is_private = request.POST.get('private')
             key = request.POST.get('key')
 
-            if is_private == 'public':
+            if is_private == 'Public':
+                request.session[f"chat_access_{room_name}"] = True
                 return redirect('room', room_name)
 
             else:

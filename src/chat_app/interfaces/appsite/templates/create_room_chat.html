@@ -6,7 +6,7 @@
 {% block css %}<link rel="stylesheet" href="{% static 'css/create_room_chat.css' %}">{% endblock %}
 {% block content %}
 
-<a href="{% url 'signout' %}"><i class="fa-solid fa-right-from-bracket" title="Sign out"></i></a>
+<a href="{% url 'signout' %}"><i class="fa-solid fa-right-from-bracket" title="SignOut"></i></a>
 
 <div class="wrapper">
   <div class="room-create">
@@ -33,7 +33,7 @@
       If room chat is being created choose between public or private option, if room chat exist and is private enter the private key to enter the chat.
     </li>
     <li>
-      A room chat that is not used for more than 10 days will be automatically deleted.
+      A room chat that is not used for more than 5 days will be automatically deleted.
     </li>
   </ul>
   </div>
@@ -42,7 +42,7 @@
 <img id="robot" src="{% static 'img/robot.png' %}">
 
 <div id="my-info-container">
-  <div class="my-info"><p>Check out the source code <a href="https://www.github.com/DM880" style="font-size: 20px;" target="_blank">here</a></p></div>
+  <div class="my-info"><p>Check out the source code <a href="https://github.com/DM880/Chat" style="font-size:20px;" target="_blank">here</a></p></div>
   <div class="triangle"></div>
 </div>
 <img id="robot_after" src="{% static 'img/robot_after.png' %}">
