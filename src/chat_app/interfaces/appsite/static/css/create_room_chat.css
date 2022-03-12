@@ -4,6 +4,7 @@ body{
   background:url('../img/create_room_background.png');
   background-size: cover;
   font-family: 'Saira Condensed', sans-serif;
+  min-height: 100%;
 }
 
 .fa-right-from-bracket{
@@ -97,6 +98,7 @@ label{
   color: #5463FF;
   display: none;
   z-index: 99;
+  margin-bottom: 100px;
 }
 
 .description{

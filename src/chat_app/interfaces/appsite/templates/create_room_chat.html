@@ -13,7 +13,7 @@
     <form method="post" action="{% url 'create_room_chat' %}">
       {% csrf_token %}
     <h2>Create or Join Room Chat</h2>
-    <input placeholder="Room Name" class="create-input" name="room_name" required></input>
+    <input id="room-input" placeholder="Room Name" class="create-input" name="room_name" required></input>
   <button type="submit">Join/Create</button>
   </form>
   </div>
@@ -39,13 +39,14 @@
   </div>
 </div>
 
-<img id="robot" src="{% static 'img/robot.png' %}">
-
+<div>
+  <img id="robot" src="{% static 'img/robot.png' %}">
+  <img id="robot_after" src="{% static 'img/robot_after.png' %}">
 <div id="my-info-container">
   <div class="my-info"><p>Check out the source code <a href="https://github.com/DM880/Chat" style="font-size:20px;" target="_blank">here</a></p></div>
   <div class="triangle"></div>
 </div>
-<img id="robot_after" src="{% static 'img/robot_after.png' %}">
+</div>
 
 
 

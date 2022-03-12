@@ -92,7 +92,7 @@ def reset_password(request):
         try:
             user = User.objects.get(username=username, email=email)
         except User.DoesNotExist:
-            message = 'username or email invalid'
+            message = 'Username or email invalid'
             return render(request, 'reset_password.html', {"message":message})
 
         if password1 != password2:
@@ -145,6 +145,7 @@ def create_room_chat(request):
                 request.session[f"pp_create_room_chat_{room_name}"] = True
                 return redirect("choose_create_chat", room_name)
 
+            # if room is public
             if room.private == False:
                 request.session[f"chat_access_{room_name}"] = True
                 return redirect("room", room_name)
