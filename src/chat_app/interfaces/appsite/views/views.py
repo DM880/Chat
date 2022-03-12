@@ -74,7 +74,7 @@ def sign_up(request):
 
         success = "Account created successfully"
 
-        return render(request, "sign.html", {"message": message, "success":success})
+        return render(request, "sign.html", {"message": message, "success": success})
 
     else:
         return redirect("sign")
@@ -92,19 +92,22 @@ def reset_password(request):
         try:
             user = User.objects.get(username=username, email=email)
         except User.DoesNotExist:
-            message = 'Username or email invalid'
-            return render(request, 'reset_password.html', {"message":message})
+            message = "Username or email invalid"
+            return render(request, "reset_password.html", {"message": message})
 
         if password1 != password2:
             message = "Passwords don't match"
-            return render(request, 'reset_password.html', {"message": message})
+            return render(request, "reset_password.html", {"message": message})
 
         user.set_password(password1)
         user.save()
 
-        return redirect('sign')
+        return redirect("sign")
 
-    return render(request, 'reset_password.html',)
+    return render(
+        request,
+        "reset_password.html",
+    )
 
 
 @login_required
@@ -165,12 +168,12 @@ def choose_create_chat(request, room_name):
 
         if request.method == "POST":
 
-            is_private = request.POST.get('private')
-            key = request.POST.get('key')
+            is_private = request.POST.get("private")
+            key = request.POST.get("key")
 
-            if is_private == 'Public':
+            if is_private == "Public":
                 request.session[f"chat_access_{room_name}"] = True
-                return redirect('room', room_name)
+                return redirect("room", room_name)
 
             else:
                 room = Room.objects.get(name=room_name)
@@ -180,9 +183,9 @@ def choose_create_chat(request, room_name):
 
                 request.session[f"chat_access_{room_name}"] = True
 
-                return redirect('room', room_name)
+                return redirect("room", room_name)
 
-        return render(request, "choose_create_chat.html", {'room_name':room_name})
+        return render(request, "choose_create_chat.html", {"room_name": room_name})
 
 
 @login_required
@@ -192,18 +195,18 @@ def enter_key(request, room_name):
 
         if request.method == "POST":
 
-            check_key = request.POST.get('check_key')
+            check_key = request.POST.get("check_key")
 
             room = Room.objects.get(name=room_name)
 
             if check_key == room.key:
                 request.session[f"chat_access_{room_name}"] = True
-                return redirect('room', room_name)
+                return redirect("room", room_name)
 
             else:
-                render(request,'enter_key.html', {'room_name':room_name})
+                render(request, "enter_key.html", {"room_name": room_name})
 
-        return render(request,'enter_key.html', {'room_name':room_name})
+        return render(request, "enter_key.html", {"room_name": room_name})
 
 
 @login_required
