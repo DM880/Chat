@@ -13,12 +13,15 @@ def time_check(room):
 
     # if empty no need to delete chat
     if not last_message:
-        return False
+        last_use = room.created
+
+    else:
+        last_use = last_message.timestamp
 
     all_messages = Message.objects.filter(room=room)
 
     # last message timestamp + 10 days
-    time_passed = str(last_message.timestamp + relativedelta(days=+10))
+    time_passed = str(last_use + relativedelta(days=+5))
 
     time_now = str(timezone.now())
 

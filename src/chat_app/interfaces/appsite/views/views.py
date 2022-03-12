@@ -167,7 +167,8 @@ def choose_create_chat(request, room_name):
             is_private = request.POST.get('private')
             key = request.POST.get('key')
 
-            if is_private == 'public':
+            if is_private == 'Public':
+                request.session[f"chat_access_{room_name}"] = True
                 return redirect('room', room_name)
 
             else:

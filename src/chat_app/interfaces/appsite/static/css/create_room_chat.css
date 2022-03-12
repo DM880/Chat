@@ -3,6 +3,7 @@
 body{
   background:url('../img/create_room_background.png');
   background-size: cover;
+  font-family: 'Saira Condensed', sans-serif;
 }
 
 .fa-right-from-bracket{
@@ -30,7 +31,6 @@ body{
   margin-top: 10%;
   border-radius: 5px;
   text-align: center;
-  font-family: 'Saira Condensed', sans-serif;
   color: #FFC107;
 }
 
