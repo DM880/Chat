@@ -135,10 +135,10 @@ def create_room_chat(request):
 
         else:
             room = Room.objects.get(name=room_name)
-            # check how how much time has passed since last message
+            # check how how much time has passed since last message/creation room
             check = time_check(room)
 
-            # create new room if time passed is more than 10days
+            # create new room if time passed is more than 5days
             if check == True:
                 Room.objects.create(name=room_name)
 
