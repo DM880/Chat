@@ -89,15 +89,11 @@ WSGI_APPLICATION = "chat_app.wsgi.application"
 ASGI_APPLICATION = "chat_app.asgi.application"
 
 CHANNEL_LAYERS = {
-    # "default": {
-    #     "BACKEND": "channels.layers.InMemoryChannelLayer"
-        'default': {
-            'BACKEND': 'channels_redis.core.RedisChannelLayer',
-            'CONFIG': {
-                "hosts": [(os.environ.get('REDIS_HOST', '0.0.0.0'),8080)],
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
     },
-    }
 }
+
 
 
 # Database
